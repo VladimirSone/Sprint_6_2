@@ -2,11 +2,10 @@ import allure
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locator.main_page_locators import MainPageLocators
+from page_objects.base_page import BasePage
 
 
-class MainPage:
-    def __init__(self, driver):
-        self.driver = driver
+class MainPage(BasePage):
 
     @allure.title('ожидание загрузки кнопки Заказать(вверху страницы)')
     def wait_for_button_order(self):
@@ -15,7 +14,7 @@ class MainPage:
 
     @allure.title('нажать кнопку Заказать')
     def click_button_order(self):
-        self.driver.find_element(*MainPageLocators.button_order_in_header).click()
+        self.click_on_element(MainPageLocators.button_order_in_header)
 
     @allure.title('ожидание страницы Заказать')
     def wait_for_order(self):
@@ -24,7 +23,7 @@ class MainPage:
 
     @allure.title('нажать логотип самокат')
     def click_scooter_logo(self):
-        self.driver.find_element(*MainPageLocators.scooter_logo).click()
+        self.click_on_element(MainPageLocators.scooter_logo)
 
     @allure.title('ожижание главной страницы Самокат')
     def wait_for_page_heading(self):
@@ -44,7 +43,7 @@ class MainPage:
 
     @allure.title('нажать на логотип Яндекс')
     def click_yandex_logo(self):
-        self.driver.find_element(*MainPageLocators.yandex_logo).click()
+        self.click_on_element(MainPageLocators.yandex_logo)
 
     @allure.title('открытие новой вкладки')
     def switch_to_next_tab(self):
@@ -63,9 +62,9 @@ class MainPage:
 
     @allure.title('клик по вопросам')
     def click_question_1(self,data):
-        self.driver.find_element(*MainPageLocators.list_question[data]).click()
+        self.click_on_element(MainPageLocators.list_question[data])
 
-    @allure.title('ожадиние загрузки раздела вопросы')
+    @allure.title('ожидание загрузки раздела вопросы')
     def wait_visibility_faq_section(self):
         WebDriverWait(self.driver,10).until(expected_conditions.visibility_of_element_located(MainPageLocators.faq_section))
 

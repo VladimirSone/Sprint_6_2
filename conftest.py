@@ -6,6 +6,6 @@ from selenium import webdriver
 def driver():
     driver = webdriver.Firefox()
     driver.window('--window-size=1920,1080')
-    driver.get("https://qa-scooter.praktikum-services.ru/")
+    driver.get('https://qa-scooter.praktikum-services.ru/')
     yield driver
     driver.quit()
